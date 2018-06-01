@@ -6,6 +6,7 @@
         {{voting.movie}} - {{voting.number}}
       </li>
     </ol>
+    <router-link to="/">Vote again</router-link>
   </div>
 </template>
 
