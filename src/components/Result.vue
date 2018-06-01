@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import db from './db'
 
 export default {
@@ -18,8 +19,7 @@ export default {
     let votings = {}
     let vm = this
     db.ref('voting').on('child_added', child => {
-       votings[child.val()] = (votings[child.val()] || 0) + 1
-       vm.$forceUpdate()
+       Vue.set(votings, child.val(), (votings[child.val()] || 0) + 1)
     })
     return {
       votings: votings
