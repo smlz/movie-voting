@@ -18,7 +18,6 @@ export default {
   name: 'Result',
   data () {
     let votings = {}
-    let vm = this
     db.ref('voting').on('child_added', child => {
        Vue.set(votings, child.val(), (votings[child.val()] || 0) + 1)
     })
