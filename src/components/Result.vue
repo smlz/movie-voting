@@ -13,17 +13,6 @@ import db from './db'
 
 Vue.use(VueChart);
 
-
-let colors = (() => {
-  let colors = []
-  let numOfColors = 16
-  let rand = () => Math.floor(Math.random() * 255)
-  for (let i=0; i < numOfColors; i++) {
-    colors.push("rgb(" + rand() + "," + rand() + "," + rand() + ")")
-  }
-  return colors
-})()
-
 export default {
   name: 'Result',
   data () {
@@ -52,7 +41,9 @@ export default {
         // hash the movie name
         let hash = voting.movie.split('').map(s => s.codePointAt(0))
                    .reduce((a, b) => a + b)
-        backgroundColor.push(colors[hash % colors.length])
+        backgroundColor.push("rgb(" + hash % 256 + "," +
+                                      hash * 13 % 256 + "," +
+                                      hash * 13 * 13 % 256 + ")")
         data.push(voting.number)
       }
       return {labels, datasets: [{backgroundColor, data}]}
