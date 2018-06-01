@@ -16,8 +16,10 @@ export default {
   name: 'Result',
   data () {
     let votings = {}
+    let vm = this
     db.ref('voting').on('child_added', child => {
        votings[child.val()] = (votings[child.val()] || 0) + 1
+       vm.$forceUpdate()
     })
     return {
       votings: votings
