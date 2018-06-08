@@ -10,6 +10,7 @@
 import Vue from 'vue'
 import VueChart from 'vue-chart'
 import db from './db'
+import colorForString from '@/color'
 
 Vue.use(VueChart);
 
@@ -38,12 +39,7 @@ export default {
 
       for (let voting of list) {
         labels.push(voting.movie)
-        // hash the movie name
-        let hash = voting.movie.split('').map(s => s.codePointAt(0))
-                   .reduce((a, b) => a + b)
-        backgroundColor.push("rgb(" + hash % 256 + "," +
-                                      hash * 13 % 256 + "," +
-                                      hash * 13 * 13 % 256 + ")")
+        backgroundColor.push(colorForString(voting.movie))
         data.push(voting.number)
       }
       return {labels, datasets: [{backgroundColor, data}]}
