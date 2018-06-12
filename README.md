@@ -2,6 +2,16 @@
 
 > A Vue.js project
 
+## Setup
+
+```basj
+# install vue-cli
+npm install -g vue-cli
+
+# initialize project
+vue init webpack movie-voting
+```
+
 ## Build Setup
 
 ``` bash
